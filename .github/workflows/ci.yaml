@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [main]
+    branches: [main, testing]
 
   pull_request:
     branches: [main]
@@ -12,8 +12,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        ghc: ['8.10.7', '9.0.2', '9.2.8']
-        cabal: ['3.6']
+        ghc: ['8.10.7', '9.0.2', '9.2.8', '9.4.5']
+        cabal: ['3.8']
         os: [ubuntu-latest, macOS-latest]
 
     name: ghc-${{ matrix.ghc }} cabal-${{matrix.cabal}} on ${{ matrix.os }}
