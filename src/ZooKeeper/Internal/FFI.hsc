@@ -7,8 +7,7 @@ module ZooKeeper.Internal.FFI where
 import           Control.Concurrent
 import           Control.Exception
 import           Control.Monad                (void)
-import           Data.Version                 (Version, makeVersion,
-                                               parseVersion)
+import           Data.Version                 (Version, makeVersion)
 import           Data.Word
 import           Foreign.C
 import           Foreign.ForeignPtr
@@ -16,12 +15,16 @@ import           Foreign.Ptr
 import           Foreign.StablePtr
 import           GHC.Conc
 import           GHC.Stack                    (HasCallStack)
-import           Text.ParserCombinators.ReadP (readP_to_S)
 import qualified Z.Data.CBytes                as CBytes
 import           Z.Foreign
 
 import           ZooKeeper.Exception
 import           ZooKeeper.Internal.Types
+
+#ifndef ZOO_MAJOR_VERSION
+import           Data.Version                 (parseVersion)
+import           Text.ParserCombinators.ReadP (readP_to_S)
+#endif
 
 #include "hs_zk.h"
 
